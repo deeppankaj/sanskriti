@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, {  } from "react";
 import map from "../../assets/map.png";
 import { Link, useLocation } from "react-router-dom";
 import { GetCollection } from "../../configuration/Firebasecontrol";

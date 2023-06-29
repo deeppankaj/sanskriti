@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { GetDoc } from "../../configuration/Firebasecontrol";
 import { Bars } from "react-loader-spinner";
 import { GetUser } from "../../utility/Data";
 import DownloadMap from "../../utility/DownloadMap";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-
+import { toast } from "react-toastify";
 
 const MapDetail = () => {
   const mapname = useLocation().pathname.split("/")[3].split("%20").join(" ");
@@ -14,14 +14,14 @@ const MapDetail = () => {
   const [binding, setBinding] = useState("");
   const [price, setPrice] = useState("");
 
-  const mapdata= {
+  const mapdata = {
     name: user?.userName,
-    mapImg:data?.images[0],
+    mapImg: data?.images[0],
     mapname,
     binding,
-    price
-  }
-  
+    price,
+  };
+
   const handleClick = (bind) => {
     setBinding(bind);
     const price = bind.split("-")[1];
@@ -104,18 +104,37 @@ const MapDetail = () => {
                   <p className="p-2">{price}</p>
                 </div>
                 <div className="col-12">
-                  <PDFDownloadLink
-
-                    document={<DownloadMap data={mapdata} user={user} img={data?.images[0]} mapn={mapname}/>}
-                    fileName="map.pdf"
-                  >
-                    {({ blob, url, loading, error }) =>
-                      <button className="btn btn-primary col-6">
-                      {" "}
-                      Download PDF
-                    </button>
+                  {user && (
+                    <>
+                    {
+                      binding !== "" ? <PDFDownloadLink
+                      document={
+                        <DownloadMap
+                          data={mapdata}
+                          user={user}
+                          img={data?.images[0]}
+                          mapn={mapname}
+                        />
+                      }
+                      fileName={`${mapname}-${user?.userName}.pdf`}
+                    >
+                      {({ blob, url, loading, error }) => (
+                        <button className="btn btn-primary col-6">
+                          {" "}
+                          Download PDF
+                        </button>
+                      )}
+                    </PDFDownloadLink>:<button onClick={()=>toast.info("Please Select binding first")} className="btn btn-primary col-6">
+                          {" "}
+                          Download PDF
+                        </button>
                     }
-                  </PDFDownloadLink>
+                    </>
+                  )}
+                  {!user&& <button onClick={()=>toast.info("Login to Download")} className="btn btn-primary col-6">
+                          {" "}
+                          Login To Download Map
+                        </button>}
                 </div>
               </div>
             </div>
@@ -135,7 +154,7 @@ const MapDetail = () => {
         </div>
       )}
       <div className="none d-none">
-      {/* <DownloadMap user={user} img={data?.images[0]} mapn={mapname} className="none"/> */}
+        {/* <DownloadMap user={user} img={data?.images[0]} mapn={mapname} className="none"/> */}
       </div>
     </>
   );

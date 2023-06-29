@@ -62,7 +62,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="container-b bg-white fixed z-[999999] shadow-sm">
+      <div className="container-b bg-white fixed z-[999] shadow-sm">
         <div className="flex items-center h-[60px] gap-2 justify-between bg-white">
           <div className="sm:hidden right">
             <div className="flex " onClick={handletogglemenu}>
