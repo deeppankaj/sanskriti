@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { GetDoc } from "../../configuration/Firebasecontrol";
 import { Bars } from "react-loader-spinner";
-import ReactToPrint from "react-to-print";
 import { GetUser } from "../../utility/Data";
+import DownloadMap from "../../utility/DownloadMap";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+
 
 const MapDetail = () => {
   const mapname = useLocation().pathname.split("/")[3].split("%20").join(" ");
@@ -11,13 +13,20 @@ const MapDetail = () => {
   const user = GetUser();
   const [binding, setBinding] = useState("");
   const [price, setPrice] = useState("");
-  const [printable, setPrintable] = useState(true)
+
+  const mapdata= {
+    name: user?.userName,
+    mapImg:data?.images[0],
+    mapname,
+    binding,
+    price
+  }
+  
   const handleClick = (bind) => {
     setBinding(bind);
     const price = bind.split("-")[1];
     setPrice(price);
   };
-  const componentRef = useRef();
 
   return (
     <>
@@ -95,16 +104,18 @@ const MapDetail = () => {
                   <p className="p-2">{price}</p>
                 </div>
                 <div className="col-12">
-                  <ReactToPrint
-                  onClick={()=>setPrintable(false)}
-                    trigger={() => (
+                  <PDFDownloadLink
+
+                    document={<DownloadMap data={mapdata} user={user} img={data?.images[0]} mapn={mapname}/>}
+                    fileName="map.pdf"
+                  >
+                    {({ blob, url, loading, error }) =>
                       <button className="btn btn-primary col-6">
-                        {" "}
-                        Download{" "}
-                      </button>
-                    )}
-                    content={() => componentRef.current}
-                  />
+                      {" "}
+                      Download PDF
+                    </button>
+                    }
+                  </PDFDownloadLink>
                 </div>
               </div>
             </div>
@@ -123,23 +134,9 @@ const MapDetail = () => {
           />
         </div>
       )}
-      
-      {printable&&<div className="container p-10 bg-white" ref={componentRef}>
-        <h1 className="h1 text-center">Snaskriti Maps</h1>
-        <div className="col-12 flex justify-center items-center my-10 ">
-          <img src={data?.images[0]} alt="" />
-        </div>
-        <div className="col-12 row">
-          <div className="flex col-12 col-md-10 gap-2 mt-2">
-            <p className="h6 font-bold  p-2 ">Name :</p>
-            <p className="p-2">{user?.userName}</p>
-          </div>
-          <div className="flex col-12 col-md-10 gap-2">
-            <p className="h6 font-bold  p-2 ">Email :</p>
-            <p className="p-2">{user?.Email}</p>
-          </div>
-        </div>
-      </div>}
+      <div className="none d-none">
+      {/* <DownloadMap user={user} img={data?.images[0]} mapn={mapname} className="none"/> */}
+      </div>
     </>
   );
 };

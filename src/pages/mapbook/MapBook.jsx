@@ -40,10 +40,10 @@ const MapBook = () => {
       </div>
       <div className="productcontainer container col-12">
         <div className="row px-4 justify-center">
-          {maps?.map((map)=>{
-            return (<>
-            <MapCard data={map}/><MapCard data={map}/>
-            </>)
+          {maps?.map((map,i)=>{
+            return (
+            <MapCard key={i} data={map}/>
+            )
           })}
         </div>
       </div>

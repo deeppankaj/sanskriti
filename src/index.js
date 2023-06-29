@@ -8,7 +8,6 @@ import { store } from "../src/Redux-Store";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-window.scrollTo(0, 0);
 root.render(
   <React.StrictMode>
     <Router>

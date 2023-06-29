@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 
 export const GetUser = (uni) => {
-    const id = localStorage.getItem("token");
+    const id = localStorage.getItem("token")||"none";
     const [user, setUser] = useState();
     useEffect(() => {
       onSnapshot(doc(database, "user", id), (snap) => {

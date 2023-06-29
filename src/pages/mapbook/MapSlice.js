@@ -13,18 +13,6 @@ const initialState = {
 export const fetchMapData = createAsyncThunk(
   "collection/fetchData",
   async () => {
-    // let Data;
-
-    // const snapshot = onSnapshot(collection(database, "Maps"), (snapshot) => {
-    //   const docsofsnap = snapshot.docs;
-    //   Data = docsofsnap.map((doc) => doc.data().ma)
-    //   docsofsnap.forEach((ele) => {
-    //     console.log(Data);
-    //     // collectionData.push(ele.data());
-    //     // Data.map((doc) => doc.data());
-    //     return <></>;
-    //   });
-    // });
     const docRef = doc(database, "Maps","Dwarka Expressway Project Eazimaps Mapbook");
     const docSnap = await getDoc(docRef);
     const data = docSnap.data();
