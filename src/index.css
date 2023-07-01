@@ -10,8 +10,10 @@
 }
 
 body {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
+    box-sizing: border-box;
+    background: url("./assets/geometry2.png");
     /* background-color: antiquewhite; */
 }
 

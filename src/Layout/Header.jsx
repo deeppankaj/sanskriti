@@ -63,7 +63,7 @@ const Navbar = () => {
   return (
     <>
       <div className="container-b bg-white fixed z-[999] shadow-sm">
-        <div className="flex items-center h-[60px] gap-2 justify-between bg-white">
+        <div className="flex container items-center h-[80px] gap-2 justify-between bg-white">
           <div className="sm:hidden right">
             <div className="flex " onClick={handletogglemenu}>
               {toggle && <FiMenu fontSize={25} />}
@@ -199,7 +199,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="container-b bg-white h-[60px]"></div>
+      <div className="container-b bg-white h-[80px]"></div>
 
       <div className={togglemenu}>
         <div className=" p-5 pb-20 bg-white flex flex-col justify-between rounded-lg z-40  w-full text-lg">
