@@ -27,8 +27,8 @@ const Home = () => {
         </div>
       </div>
       <div>
-      <Associate/>
       <Service/>
+      <Associate/>
       </div>
       <HomeCarasouel />
     </div>
