@@ -44,7 +44,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="h-full w-full bg-gray-100">
+      <div className="h-full w-full">
         <div className=" flex justify-center items-center ">
           <div className="flex flex-col p-2 sm:p-10  sm:mt-10 rounded-xl my-10  form_container w-4/5 sm:w-[600px] ">
             <form className="w-full my-5 border-2 p-4 sm:p-10 py-10 shadow-lg rounded-md border-purple-700">

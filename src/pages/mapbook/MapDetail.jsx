@@ -96,11 +96,11 @@ const MapDetail = () => {
                   </div>
                 ))}
                 <div className="flex col-12 col-md-10 gap-2">
-                  <p className="h6 font-bold  p-2 ">Paper Quality :</p>
+                  <p className="h6 font-bold  p-2 ">Binding :</p>
                   <p className="p-2">{binding}</p>
                 </div>
                 <div className="flex col-12 col-md-10 gap-2 -mt-2">
-                  <p className="h6 font-bold  p-2 ">Paper Quality :</p>
+                  <p className="h6 font-bold  p-2 ">Price :</p>
                   <p className="p-2">{price}</p>
                 </div>
                 <div className="col-12">

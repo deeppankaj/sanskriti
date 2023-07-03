@@ -52,9 +52,9 @@ const Navbar = () => {
       .then(() => {
         // Sign-out successful.
         localStorage.setItem("token", "none");
+        window.location.reload()
         navigate("/login");
         toast.info("Logut Sucessfully");
-        window.location.reload()
       })
       .catch((error) => {
         // An error happened.

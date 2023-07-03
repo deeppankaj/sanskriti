@@ -92,7 +92,7 @@ const SignUp = () => {
   return (
     <>
             
-          <div className=' w-full bg-gray-100 flex justify-center items-center'>
+          <div className=' w-full flex justify-center items-center'>
             <div className='flex flex-col p-4 md:p-8 rounded-lg md:w-[600px] form_container w-[90vw] '>
 
               <form className='w-full my-5 border-2 p-4 sm:p-10 py-10 shadow-lg rounded-md border-purple-700'

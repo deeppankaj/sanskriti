@@ -2,6 +2,7 @@ import React from "react";
 import HomeCarasouel from "./HomeCarasouel";
 import intro from "../../assets/intro.gif";
 import Service from "./Service";
+import Associate from "./Associate";
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
         </div>
       </div>
       <div>
+      <Associate/>
       <Service/>
       </div>
       <HomeCarasouel />
